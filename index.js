@@ -1,6 +1,30 @@
 $(document).ready(() => {
-    console.log("Website has loaded - adding Event Listener for Ambient Light")
+    // Loading tweets 
+    var url = 'https://api.twitter.com/1/statuses/user_timeline.json?callback=?&screen_name=tecoKIT&count=4';
 
+    $.getJSON(
+        url,
+        function (data)
+        {
+            var $tweets = $('#tweets');
+            $tweets.empty();
+            if (data.length !== 0) {
+                $.each(data, function (i, tweet)
+                {
+                    console.log(tweet.text)
+                });
+            } else {
+                console.log("tweet array empty")
+                //$tweets.append($('<li></li>', { text: 'No recent tweets' }));
+            }
+        }
+    );
+
+
+
+
+
+    console.log("Website has loaded - adding Event Listener for Ambient Light")
     if (window.AmbientLightSensor){
         try{
           const sensor = new AmbientLightSensor();
