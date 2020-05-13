@@ -29,11 +29,7 @@ $(document).ready(() => {
             sensor.start();
         } catch (err) {
             // Error handling of everything else above
-            // Set the error message
-            $("#error-notification").html("Your device does not seem to allow accessing the ambient light sensor.")
-
-            // Show the error message
-            $("#error").show()
+            handleSensorError()
         }
     } else {
         // The browser does not support ambient lighting, display that to the user
@@ -141,7 +137,7 @@ $(document).ready(() => {
 
     function handleSensorError(){
         // Set the error message
-        $("#error-notification").html("Your ambient light sensor, does not seem to work properly.")
+        $("#error-notification").html("Your device does not seem to allow or is incapable of accessing the ambient light sensor.")
 
         // Show the error message
         $("#error").show()
