@@ -11,12 +11,6 @@ $(document).ready(() => {
             theme = "light"
             $('#bulma_theme').attr('href','https://jenil.github.io/bulmaswatch/flatly/bulmaswatch.min.css');
         }
-
-        console.log("switchting theme to " + theme)
-
-        
-
-
     })
 
 
