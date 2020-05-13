@@ -55,21 +55,8 @@ $(document).ready(() => {
                 // One second has passed, check if we should switch the theme
                 // calculate the median 
                 console.log("calculating median!")
-                
-                var arr = illuminances
-                var arrSort = arr.sort((f,s)=>{
-                    if(f < s){ return -1; }
-                    else if(f > s){ return 1; }
-                    else{ return 0; }
-                })
-                console.log(arrSort)
-                var mid = Math.ceil(arr.length / 2);
-                var median = arr.length % 2 == 0 ? (arrSort[mid] + arrSort[mid - 1]) / 2 : arrSort[mid - 1];
-                console.log(median)
 
-
-
-
+                var median = calculateMedian(illuminances)
 
                 console.log("Median is = " + median)
                 if(median <= 50){
