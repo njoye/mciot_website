@@ -45,9 +45,11 @@ $(document).ready(() => {
     // Test if the browser is compatible, if not we don't need to waste 
     // computing power for the interval
     console.log("compatible="+compatible)
+    
     if(compatible){
         // Called every 200 milliseconds
         setInterval(200, () => {
+            console.log(illuminances)
             if(illuminances.length == 5){
                 // One second has passed, check if we should switch the theme
                 // calculate the median 
