@@ -50,9 +50,11 @@ $(document).ready(() => {
         console.log("inside compatible")
         // Called every 200 milliseconds
         setInterval(function(){
-            if(illuminances.length == 5){
+            if(illuminances.length >= 5){
+                console.log("more than 4 elements! hey!")
                 // One second has passed, check if we should switch the theme
                 // calculate the median 
+                console.log("calculating median!")
                 var median = calculateMedian(illuminances)
                 console.log("Median is = " + median)
                 if(median <= 50){
