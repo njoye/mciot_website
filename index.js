@@ -103,6 +103,7 @@ $(document).ready(() => {
      * Switches the theme of the website
      */
     function switchTheme() {
+        console.log("switching theme")
         if (theme == "light") {
             switchThemeToDark()
         } else {
