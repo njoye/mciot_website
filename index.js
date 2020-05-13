@@ -50,8 +50,6 @@ $(document).ready(() => {
         console.log("inside compatible")
         // Called every 200 milliseconds
         setInterval(function(){
-            console.log(illuminances)
-            console.log("illuminances^^")
             if(illuminances.length == 5){
                 // One second has passed, check if we should switch the theme
                 // calculate the median 
