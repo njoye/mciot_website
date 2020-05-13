@@ -44,6 +44,7 @@ $(document).ready(() => {
 
     // Test if the browser is compatible, if not we don't need to waste 
     // computing power for the interval
+    console.log("compatible="+compatible)
     if(compatible){
         // Called every 200 milliseconds
         setInterval(200, () => {
