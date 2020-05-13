@@ -53,7 +53,7 @@ $(document).ready(() => {
                 var average = calculateAverage(illuminances)
 
                 console.log("Average = " + average)
-                if(average <= 50){
+                if(average < 50){
                     // Median is a dark room, so switch to the dark theme
                     switchThemeToDark()
                 }else{
