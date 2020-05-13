@@ -47,7 +47,7 @@ $(document).ready(() => {
     } else {
         // The browser does not support ambient lighting, display that to the user
         compatible = false
-        
+
         // Set the error message
         $("#error-notification").html("Your device does not have an ambient light sensor or your browser does not have the capabilities of accessing it.")
 
@@ -148,7 +148,7 @@ $(document).ready(() => {
     }
 
 
-    function handleSensorError(){
+    function handleSensorError() {
         // Set the error message
         $("#error-notification").html("Your device does not seem to allow or is incapable of accessing the ambient light sensor.")
 
