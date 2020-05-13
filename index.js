@@ -1,3 +1,5 @@
 $(document).ready(() => {
-    console.log("test")
+    window.addEventListener('deviceLight', function(event){
+        console.log(event.value)
+    })
 })
