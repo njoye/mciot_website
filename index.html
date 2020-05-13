@@ -17,6 +17,16 @@
         <script src="index.js"></script>
    </head>
     <body>
+        <!-- The error box displayed when the sensor is not available-->
+        <section id="info" style="display: none;">
+            <div class="container">
+                <div class="notification is-danger">
+                    Your device does not have an ambient light sensor or your browser does not have the capabilities of accessing it.
+                </div>
+            </div>
+          </section>
+
+        <!-- content of the website starts here -->
         <section class="section">
             <div class="container">
               <h1 class="title">
@@ -27,17 +37,7 @@
               </p>
             </div>
           </section>
-          <section>
-              <div>Currently the ambient light sensor value is:</div>
-              <div id="value">
 
-              </div>
-          </section>
-
-          <section id="info" style="display: none;">
-            <div class="notification is-danger">
-                Your device does not have an ambient light sensor or your browser does not have the capabilities of accessing it.
-            </div>
-          </section>
+          
     </body>
 </html>
