@@ -25,6 +25,6 @@ $(document).ready(() => {
         }
     } else {
       console.log("Browser doesn't support ambient light")
-      $("#info").show()
+      $("#error").show()
     }
 })
