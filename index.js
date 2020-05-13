@@ -55,15 +55,7 @@ $(document).ready(() => {
                 // One second has passed, check if we should switch the theme
                 // calculate the median 
                 console.log("calculating median!")
-                //var median = calculateMedian(illuminances)
-
-                // Calculate median inline because calling outside doesn't seem to work ._.
-                var arrSort = illuminances.sort();
-                console.log(arrSort)
-                var mid = Math.ceil(len / 2);
-                //console.log(mid)
-                var median = len % 2 == 0 ? (arrSort[mid] + arrSort[mid - 1]) / 2 : arrSort[mid - 1];
-
+                var median = calculateMedian(illuminances)
 
                 console.log("Median is = " + median)
                 if(median <= 50){
@@ -93,9 +85,9 @@ $(document).ready(() => {
     function calculateMedian(arr){
         var arrSort = arr.sort();
         console.log(arrSort)
-        var mid = Math.ceil(len / 2);
+        var mid = Math.ceil(arr.length / 2);
         console.log(mid)
-        var median = len % 2 == 0 ? (arrSort[mid] + arrSort[mid - 1]) / 2 : arrSort[mid - 1];
+        var median = arr.length % 2 == 0 ? (arrSort[mid] + arrSort[mid - 1]) / 2 : arrSort[mid - 1];
         console.log(median)
         return median;
     }
