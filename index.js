@@ -50,16 +50,13 @@ $(document).ready(() => {
         console.log("inside compatible")
         // Called every 200 milliseconds
         setInterval(function(){
-            if(illuminances.length >= 5){
-                console.log("more than 4 elements! hey!")
+            if(illuminances.length >= 10){
                 // One second has passed, check if we should switch the theme
                 // calculate the median 
-                console.log("calculating median!")
+                var average = calculateAverage(illuminances)
 
-                var median = calculateMedian(illuminances)
-
-                console.log("Median is = " + median)
-                if(median <= 50){
+                console.log("Average = " + average)
+                if(average < 50){
                     // Median is a dark room, so switch to the dark theme
                     switchThemeToDark()
                 }else{
@@ -81,7 +78,7 @@ $(document).ready(() => {
 
     /**
      * Returns the median of any given number array
-     * @param {[INT]} arr 
+     * @param {[NUMBER]} arr 
      */
     function calculateMedian(arr){
         var arrSort = arr.sort((f,s)=>{
@@ -94,6 +91,18 @@ $(document).ready(() => {
         var median = arr.length % 2 == 0 ? (arrSort[mid] + arrSort[mid - 1]) / 2 : arrSort[mid - 1];
         console.log(median)
         return median;
+    }
+
+    /**
+     * Returns the average of any given number array
+     * @param {[NUMBER]} arr 
+     */
+    function calculateAverage(arr){
+        var sum = 0;
+        for(var i = 0; i < arr.length; i++){
+            sum += arr[i];
+        }
+        return sum / arr.length;
     }
 
     /**
