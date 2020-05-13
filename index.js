@@ -10,8 +10,11 @@ $(document).ready(() => {
               // Read the light levels in lux 
               // < 50 is dark room
               if (sensor.illuminance < 50) {
+                // TODO: switch to dark mode theme
+                
                 console.log("dark light")
               } else {
+                //TODO: switch to light mode theme
                 console.log("bright light")
               }
           }
