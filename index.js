@@ -47,7 +47,7 @@ $(document).ready(() => {
     if(compatible){
         // Called every 200 milliseconds
         setInterval(function(){
-            if(illuminances.length >= 10){
+            if(illuminances.length >= 5){
                 // One second has passed, check if we should switch the theme
                 // calculate the median 
                 var average = calculateAverage(illuminances)
