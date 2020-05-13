@@ -83,11 +83,11 @@ $(document).ready(() => {
      */
     function calculateMedian(arr){
         var arrSort = arr.sort();
-        print(arrSort)
+        console.log(arrSort)
         var mid = Math.ceil(len / 2);
-        print(mid)
+        console.log(mid)
         var median = len % 2 == 0 ? (arrSort[mid] + arrSort[mid - 1]) / 2 : arrSort[mid - 1];
-        print(median)
+        console.log(median)
         return median;
     }
 
