@@ -1,3 +1,16 @@
+/**
+ * Written by Timo Müller @ KIT / Emm! Solutions
+ */
+
+/**
+ * I am aware that on *some* (mobile) Devices running 
+ * a fork of Chromium (in my case Bromite on Android 10)
+ * do not seem to handle this JavaScript correctly, which
+ * leads to the dark mode being enabled for a second or two 
+ * and then being disabled again, when the button "switch manually"
+ * is tapped. This is too minor of an issue to fix it in this time frame though.
+ * The error also didn't occur in Safari on Mobile (iPhone 6s).
+ */
 
 
 $(document).ready(() => {
@@ -103,7 +116,6 @@ $(document).ready(() => {
      * Switches the theme of the website
      */
     function switchTheme() {
-        console.log("switching theme")
         if (theme == "light") {
             switchThemeToDark()
         } else {
