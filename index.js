@@ -62,6 +62,7 @@ $(document).ready(() => {
                 // Reset the array
                 illuminances = []
             }else{
+                console.log("added value " + currentIlluminance + " to array")
                 // the second hasn't passed yet, just add the current value
                 illuminances.push(currentIlluminance)
             }
