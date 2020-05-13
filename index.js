@@ -43,11 +43,8 @@ $(document).ready(() => {
 
 
     // Test if the browser is compatible, if not we don't need to waste 
-    // computing power for the interval
-    console.log("compatible="+compatible)
-    
+    // computing power for the interval    
     if(compatible){
-        console.log("inside compatible")
         // Called every 200 milliseconds
         setInterval(function(){
             if(illuminances.length >= 10){
@@ -66,7 +63,6 @@ $(document).ready(() => {
                 // Reset the array
                 illuminances = []
             }else{
-                console.log("added value " + currentIlluminance + " to array")
                 // the second hasn't passed yet, just add the current value
                 illuminances.push(currentIlluminance)
             }
@@ -86,10 +82,8 @@ $(document).ready(() => {
             else if(f > s){ return 1; }
             else{ return 0; }
         })
-        console.log(arrSort)
         var mid = Math.ceil(arr.length / 2);
         var median = arr.length % 2 == 0 ? (arrSort[mid] + arrSort[mid - 1]) / 2 : arrSort[mid - 1];
-        console.log(median)
         return median;
     }
 
