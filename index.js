@@ -4,6 +4,10 @@ $(document).ready(() => {
     console.log("Website is ready.")
 
     var theme = "light"
+    var illuminances = []
+
+    // Assuming a bright value for the start
+    var currentIlluminance = 100
 
     // Switch the theme on the click of the button
     // (Only visible to users without sensor)
@@ -19,13 +23,7 @@ $(document).ready(() => {
                 console.log(sensor.illuminance)
                 // sensor.illumninance represents light level in lux
                 // according to official doc: < 50 <=> "dark"
-                if (sensor.illuminance < 50) {
-                    // TODO: switch to dark mode theme
-                    console.log("dark light")
-                } else {
-                    //TODO: switch to light mode theme
-                    console.log("bright light")
-                }
+                currentIlluminance = sensor.illuminance
             }
 
             // Error handling of the sensor itself
@@ -42,14 +40,81 @@ $(document).ready(() => {
 
 
 
+    
 
+    // Called every 200 milliseconds
+    setInterval(200, () => {
+        if(illuminances.length == 5){
+            // One second has passed, check if we should switch the theme
+            // calculate the median 
+            var median = calculateMedian(illuminances)
+            console.log("Median is = " + median)
+            if(median <= 50){
+                // Median is a dark room, so switch to the dark theme
+                switchThemeToDark()
+            }else{
+                // Median is a light room, switch to light theme
+                switchThemeToLight()
+            }
+            // Reset the array
+            illuminances = []
+        }else{
+            // the second hasn't passed yet, just add the current value
+            illuminances.push(currentIlluminance)
+        }
+    })
+
+
+
+
+
+    /* FUNCTIONS */
+
+    /**
+     * Returns the median of any given number array
+     * @param {[INT]} arr 
+     */
+    function calculateMedian(arr){
+        var arrSort = arr.sort();
+        var mid = Math.ceil(len / 2);
+        var median = len % 2 == 0 ? (arrSort[mid] + arrSort[mid - 1]) / 2 : arrSort[mid - 1];
+        return median;
+    }
+
+    /**
+     * Switches the theme of the website
+     */
     function switchTheme() {
         if (theme == "light") {
-            theme = "dark"
-            $('#bulma_theme').attr('href', 'https://jenil.github.io/bulmaswatch/darkly/bulmaswatch.min.css');
+            switchThemeToDark()
         } else {
+            switchThemeToLight()
+        }
+    }
+
+    /**
+     * Switches the theme of the website
+     * to the light theme
+     */
+    function switchThemeToLight() {
+        // Check if theme is actually dark first, otherwise nothing to do here :)
+        if(theme == "dark"){
             theme = "light"
             $('#bulma_theme').attr('href', 'https://jenil.github.io/bulmaswatch/flatly/bulmaswatch.min.css');
         }
     }
+
+    /**
+     * Switches the theme of the website
+     * to the dark theme
+     */
+    function switchThemeToDark(){
+        // Check if theme is actually light first, otherwise nothing to do here :) 
+        if(theme == "light"){
+            theme = "dark"
+            $('#bulma_theme').attr('href', 'https://jenil.github.io/bulmaswatch/darkly/bulmaswatch.min.css');
+        }
+    }
+
+
 })
