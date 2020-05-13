@@ -5,6 +5,7 @@ $(document).ready(() => {
 
     var theme = "light"
     var illuminances = []
+    var compatible = true
 
     // Assuming a bright value for the start
     var currentIlluminance = 100
@@ -35,37 +36,37 @@ $(document).ready(() => {
         }
     } else {
         // The browser does not support ambient lighting, display that to the user
+        compatible = false
         $("#error").show()
     }
 
 
 
-    
-
-    // Called every 200 milliseconds
-    setInterval(200, () => {
-        if(illuminances.length == 5){
-            // One second has passed, check if we should switch the theme
-            // calculate the median 
-            var median = calculateMedian(illuminances)
-            console.log("Median is = " + median)
-            if(median <= 50){
-                // Median is a dark room, so switch to the dark theme
-                switchThemeToDark()
+    // Test if the browser is compatible, if not we don't need to waste 
+    // computing power for the interval
+    if(compatible){
+        // Called every 200 milliseconds
+        setInterval(200, () => {
+            if(illuminances.length == 5){
+                // One second has passed, check if we should switch the theme
+                // calculate the median 
+                var median = calculateMedian(illuminances)
+                console.log("Median is = " + median)
+                if(median <= 50){
+                    // Median is a dark room, so switch to the dark theme
+                    switchThemeToDark()
+                }else{
+                    // Median is a light room, switch to light theme
+                    switchThemeToLight()
+                }
+                // Reset the array
+                illuminances = []
             }else{
-                // Median is a light room, switch to light theme
-                switchThemeToLight()
+                // the second hasn't passed yet, just add the current value
+                illuminances.push(currentIlluminance)
             }
-            // Reset the array
-            illuminances = []
-        }else{
-            // the second hasn't passed yet, just add the current value
-            illuminances.push(currentIlluminance)
-        }
-    })
-
-
-
+        })
+    }
 
 
     /* FUNCTIONS */
